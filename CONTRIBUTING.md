@@ -4,7 +4,7 @@ Thanks for helping improve Fumadocs Material. Bug reports, ideas and pull reques
 
 ## Report a bug or suggest a feature
 
-[Open an issue](https://github.com/iarata/fumadocs-material/issues) with:
+[Open an issue](https://github.com/iarata/fumadocs-material-3-theme/issues) with:
 
 - what you expected and what happened
 - steps to reproduce, or a short MDX snippet
@@ -14,8 +14,8 @@ Thanks for helping improve Fumadocs Material. Bug reports, ideas and pull reques
 ## Set up
 
 ```bash
-git clone https://github.com/iarata/fumadocs-material.git
-cd fumadocs-material
+git clone https://github.com/iarata/fumadocs-material-3-theme.git
+cd fumadocs-material-3-theme
 bun install
 bun run dev
 ```

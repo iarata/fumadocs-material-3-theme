@@ -74,7 +74,7 @@ Built on TanStack Start and M3E web components, with light and dark themes and a
 ## Quick start
 
 ```bash
-gh repo create my-docs --private --template iarata/fumadocs-material --clone
+gh repo create my-docs --private --template iarata/fumadocs-material-3-theme --clone
 cd my-docs
 bun install
 bun run dev

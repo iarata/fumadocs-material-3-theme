@@ -7,7 +7,7 @@ export const docsImageRoute = '/og/docs';
 // The repository behind the GitHub links and "Edit on GitHub". Point it at your own repo.
 export const gitConfig = {
   user: 'iarata',
-  repo: 'fumadocs-material',
+  repo: 'fumadocs-material-3-theme',
   branch: 'main',
 };
 
