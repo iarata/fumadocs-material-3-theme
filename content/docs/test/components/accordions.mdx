@@ -1,0 +1,149 @@
+---
+title: Accordions and tabs
+description: Material disclosure panels with visible surfaces, states, and synchronized tabs.
+icon: Menu
+---
+
+## Accordion
+
+Accordions follow the Material 3 Expressive grouped-list structure: tonal panels without outlines, 2dp apart, with rounded outer corners and tighter inner corners. An expanded panel separates from its neighbours, rounds every corner, and turns its chevron, so the open state does not rely on colour. Headers use a title-medium headline with optional body-medium supporting text and grow to fit long titles.
+
+<Accordions>
+  <Accordion title="Start with the basics" description="Short guidance before the details" icon="Lightbulb" defaultOpen>
+    Keep related information together. Panels support **Markdown**, lists, links, and code.
+
+    - Use a meaningful title.
+    - Put essential instructions outside collapsed panels.
+  </Accordion>
+  <Accordion title="Add a code example" icon="FileText">
+    ```tsx
+    const guide = { title: 'Getting started' };
+    ```
+  </Accordion>
+  <Accordion title="Unavailable example" disabled>This section is unavailable.</Accordion>
+</Accordions>
+
+```mdx
+<Accordions type="single">
+  <Accordion title="Start here" description="Optional supporting text"
+    icon="Lightbulb" defaultOpen>
+    Your **Markdown** content.
+  </Accordion>
+  <Accordion title="Next section">More content.</Accordion>
+</Accordions>
+```
+
+Use `type="multiple"` to keep several sections open. `Accordion` accepts `disabled`, `open`, and `onOpenChange` as well as `defaultOpen`.
+
+## Icon tabs
+
+See [Material tabs](/docs/test/components/tabs) for the complete set of primary, secondary, inline, icon-only, badge, and scrollable examples.
+
+Primary tabs stack a Material Symbol above the label. The active icon, label, and indicator use the same colour role. Labels remain visible so the icons do not have to carry the meaning alone.
+
+<Preview title="Primary tabs with icons" align="start">
+  <Tabs label="Guide sections" items={[
+    { label: 'Overview', value: 'overview', icon: 'FileText' },
+    { label: 'Examples', value: 'examples', icon: 'SquarePen' },
+    { label: 'Reference', value: 'reference', icon: 'Info' },
+  ]}>
+    <Tab value="overview">Start with a short overview of the guide.</Tab>
+    <Tab value="examples">Try a working example before reading the API.</Tab>
+    <Tab value="reference">Look up the component's available properties.</Tab>
+  </Tabs>
+</Preview>
+
+```mdx
+<Tabs items={[
+  { label: 'Overview', value: 'overview', icon: 'FileText' },
+  { label: 'Examples', value: 'examples', icon: 'SquarePen' },
+]}>
+  <Tab value="overview">Overview content.</Tab>
+  <Tab value="examples">Example content.</Tab>
+</Tabs>
+```
+
+Use secondary tabs for compact navigation within a section. `tone` colours the indicator and accepts `primary` (default), `secondary`, or `tertiary`.
+
+<Preview title="Secondary tabs with icons" align="start">
+  <Tabs variant="secondary" tone="tertiary" label="Example format" defaultValue="code">
+    <TabsList>
+      <TabsTrigger value="code" icon="FileText">Code</TabsTrigger>
+      <TabsTrigger value="notes" icon="Lightbulb">Notes</TabsTrigger>
+    </TabsList>
+    <TabsContent value="code">A compact row keeps the icon beside the label.</TabsContent>
+    <TabsContent value="notes">The purple tertiary role provides supporting emphasis.</TabsContent>
+  </Tabs>
+</Preview>
+
+```mdx
+<Tabs variant="secondary" tone="tertiary">
+  <TabsList>
+    <TabsTrigger value="code" icon="FileText">Code</TabsTrigger>
+    <TabsTrigger value="notes" icon="Lightbulb">Notes</TabsTrigger>
+  </TabsList>
+  <TabsContent value="code">Code content.</TabsContent>
+  <TabsContent value="notes">Notes content.</TabsContent>
+</Tabs>
+```
+
+You can also put `icon` directly on a `Tab` when using string `items`. Tabs with icons default to the primary layout; set `variant="secondary"` for an inline icon. Existing string items and shared selections continue to work.
+
+## Shared tab selection
+
+Selecting a language changes both examples. The selection is remembered across reloads because they share `groupId` and `persist`.
+
+<Tabs items={["TypeScript", "JavaScript"]} groupId="example-language" persist>
+  <Tab value="TypeScript">Typed configuration for your guide.</Tab>
+  <Tab value="JavaScript">Plain JavaScript configuration for your guide.</Tab>
+</Tabs>
+
+<Tabs items={["TypeScript", "JavaScript"]} groupId="example-language" persist>
+  <Tab value="TypeScript">This second panel follows the TypeScript selection.</Tab>
+  <Tab value="JavaScript">This second panel follows the JavaScript selection.</Tab>
+</Tabs>
+
+```mdx
+<Tabs items={["TypeScript", "JavaScript"]} groupId="language" persist>
+  <Tab value="TypeScript">Typed example.</Tab>
+  <Tab value="JavaScript">Plain example.</Tab>
+</Tabs>
+```
+
+Omit `persist` to store the shared selection for the browser session. `defaultIndex` selects the initial tab. Controlled React examples can use `value` and `onValueChange`.
+
+## Link to a panel
+
+<Tabs items={["Overview", "Details"]} updateAnchor>
+  <Tab id="panel-overview" value="Overview">This panel has a shareable URL.</Tab>
+  <Tab id="panel-details" value="Details">Open this page with #panel-details to select this panel directly.</Tab>
+</Tabs>
+
+```mdx
+<Tabs items={["Overview", "Details"]} updateAnchor>
+  <Tab id="panel-overview" value="Overview">Overview.</Tab>
+  <Tab id="panel-details" value="Details">Details.</Tab>
+</Tabs>
+```
+
+## Primitive syntax
+
+<Tabs defaultValue="npm">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="bun">Bun</TabsTrigger>
+  </TabsList>
+  <TabsContent value="npm">Use npm for this example.</TabsContent>
+  <TabsContent value="bun">Use Bun for this example.</TabsContent>
+</Tabs>
+
+```mdx
+<Tabs defaultValue="npm">
+  <TabsList>
+    <TabsTrigger value="npm">npm</TabsTrigger>
+    <TabsTrigger value="bun">Bun</TabsTrigger>
+  </TabsList>
+  <TabsContent value="npm">npm example.</TabsContent>
+  <TabsContent value="bun">Bun example.</TabsContent>
+</Tabs>
+```

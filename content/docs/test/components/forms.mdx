@@ -1,0 +1,124 @@
+---
+title: Form controls
+description: Labelled Material inputs, choices, switches, and sliders in MDX.
+icon: SquarePen
+---
+
+These examples are interactive and local to the page. They do not save or send data.
+
+<form onSubmit={event => event.preventDefault()}>
+
+## Text fields
+
+<div className="docs-component-preview not-prose">
+  <TextField label="Project name" name="project" defaultValue="My documentation" hint="Choose a short, descriptive name." />
+  <TextArea label="Description" name="description" variant="filled" hint="A sentence about the project." />
+  <TextField label="Example with an error" defaultValue="" error="Enter a project name to continue." required />
+  <TextField label="Read-only example" defaultValue="Published documentation" readOnly />
+</div>
+
+```mdx
+<TextField label="Project name" name="project"
+  defaultValue="My documentation" hint="Choose a short name." />
+<TextArea label="Description" variant="filled" rows={3} />
+<TextField label="Project name" error="Enter a name." required />
+```
+
+`TextField` and `TextArea` support native input props, plus `label`, `hint`, `error`, and `variant` (`outlined` by default, or `filled`). An `error` message also marks the control invalid. Use `type="email"`, `type="password"`, or other native input types as needed.
+
+## Checkboxes and switches
+
+<div className="docs-component-preview not-prose">
+  <Checkbox label="Include code examples" description="Show snippets alongside the guide." name="examples" defaultChecked />
+  <Checkbox label="Unavailable option" disabled />
+  <Switch label="Preview notifications" description="Try toggling this example setting." name="notifications" defaultChecked />
+</div>
+
+```mdx
+<Checkbox label="Include code examples" name="examples" defaultChecked />
+<Switch label="Preview notifications" name="notifications" />
+```
+
+Both accept `label`, `description`, `name`, `value`, `defaultChecked`, and `disabled`. Use `checked` and `onCheckedChange` for controlled React state. Checkboxes also support `required` and `indeterminate`.
+
+## Choices
+
+<div className="docs-component-preview not-prose">
+  <RadioGroup label="Example detail" name="detail" defaultValue="short" options={[
+    { value: 'short', label: 'Quick start' },
+    { value: 'full', label: 'Full walkthrough' },
+  ]} />
+  <Select label="Example language" name="language" defaultValue="typescript" hint="Choose the language used in the preview." options={[
+    { value: 'typescript', label: 'TypeScript' },
+    { value: 'javascript', label: 'JavaScript' },
+    { value: 'python', label: 'Python' },
+  ]} />
+</div>
+
+```mdx
+<Select label="Example language" defaultValue="typescript" options={[
+  { value: 'typescript', label: 'TypeScript' },
+  { value: 'javascript', label: 'JavaScript' },
+]} />
+<RadioGroup label="Example detail" defaultValue="short" options={[
+  { value: 'short', label: 'Quick start' },
+  { value: 'full', label: 'Full walkthrough' },
+]} />
+```
+
+`Select` and `RadioGroup` require `label` and an `options` array. Each option has a `value`, `label`, and optional `disabled`. Both support `name`, `defaultValue`, `disabled`, and `required`. `Select` also supports the same `hint`, `error`, and `variant` props as text fields.
+
+<Preview title="Tertiary dropdown" align="start">
+  <Select label="Guide category" tone="tertiary" defaultValue="tutorial" options={[
+    { value: 'tutorial', label: 'Tutorial' },
+    { value: 'reference', label: 'API reference' },
+    { value: 'example', label: 'Example' },
+  ]} />
+</Preview>
+
+`Select` and text fields use the primary role by default. Set `tone="secondary"` or `tone="tertiary"` to change a field's accent colour, such as the select arrow. Focus and the selected option always use the primary blue, so every field shows focus the same way.
+
+## Sliders
+
+<div className="docs-component-preview not-prose">
+  <Slider label="Example progress" name="progress" defaultValue={40} min={0} max={100} step={10} />
+</div>
+
+```mdx
+<Slider label="Example progress" defaultValue={40}
+  min={0} max={100} step={10} />
+```
+
+The current value is displayed beside the label. Use the arrow keys for fine adjustments. `min`, `max`, and `step` default to `0`, `100`, and `1`.
+
+<Button type="reset" variant="outlined" icon="RefreshCw">Reset controls</Button>
+
+</form>
+
+## Controlled React examples
+
+Plain MDX examples use `defaultValue` or `defaultChecked`. For dependent controls, use a React component with `value` / `onValueChange` or `checked` / `onCheckedChange`.
+
+<ProgressExample />
+
+```tsx
+import { useState } from 'react';
+import { Progress, Slider, Switch } from '@/components/m3e/mdx';
+
+export function ProgressExample() {
+  const [progress, setProgress] = useState(40);
+  const [wavy, setWavy] = useState(true);
+  return (
+    <>
+      <Switch label="Expressive progress" checked={wavy}
+        onCheckedChange={setWavy} />
+      <Slider label="Progress" value={progress}
+        onValueChange={setProgress} />
+      <Progress label="Preview" value={progress}
+        variant={wavy ? 'wavy' : 'flat'} />
+    </>
+  );
+}
+```
+
+Register your React example in `getMDXComponents()` to use it from any MDX page. Labels, hints, validation messages, and disabled states are handled by the shared wrappers.

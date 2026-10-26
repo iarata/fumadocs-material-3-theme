@@ -1,0 +1,29 @@
+diff --git a/dist/radio-group.js b/dist/radio-group.js
+index 8a7429165e64960edc92c098b16d5aafafe2c584..b5ca3fb86d60c234efd1080220bdd87368346b39 100644
+--- a/dist/radio-group.js
++++ b/dist/radio-group.js
+@@ -251,6 +251,12 @@ let M3eRadioGroupElement = class M3eRadioGroupElement extends Labelled(RequiredC
+   get value() {
+     return this.selected?.value ?? null;
+   }
++  // FormAssociated restores this property during form.reset().
++  set value(value) {
++    this.radios.forEach(radio => {
++      radio.checked = radio.value === value;
++    });
++  }
+   /** @inheritdoc */
+   markAsTouched() {
+     super.markAsTouched();
+diff --git a/dist/src/radio-group/RadioGroupElement.d.ts b/dist/src/radio-group/RadioGroupElement.d.ts
+index 2fdc03bc6bd66af71191fc23c03c3a77ccc05ec4..6177c42d53b0d3500cd4a7ca681f30df1e631e62 100644
+--- a/dist/src/radio-group/RadioGroupElement.d.ts
++++ b/dist/src/radio-group/RadioGroupElement.d.ts
+@@ -51,6 +51,7 @@ export declare class M3eRadioGroupElement extends M3eRadioGroupElement_base {
+     get selected(): M3eRadioElement | null;
+     /** The selected value of the radio group. */
+     get value(): string | null;
++    set value(value: string | null);
+     /** @inheritdoc */
+     markAsTouched(): void;
+     /** @inheritdoc */

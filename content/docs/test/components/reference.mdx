@@ -1,0 +1,45 @@
+---
+title: Type tables and code
+description: Document APIs by hand or generate their property tables from TypeScript.
+icon: FileText
+---
+
+## Type table
+
+<TypeTable type={{
+  title: { type: 'string', description: 'The label readers see.', required: true },
+  variant: { type: "'filled' | 'outlined'", description: 'Choose the card emphasis.', default: 'filled' },
+  oldLabel: { type: 'string', description: 'Use title instead.', deprecated: true },
+  onSelect: { type: '(value: string) => void', description: 'Runs when a value is selected.', parameters: [{ name: 'value', type: 'string', description: 'The selected value.' }], returns: 'void' },
+}} />
+
+```mdx
+<TypeTable type={{
+  title: { type: 'string', description: 'The visible label.', required: true },
+  variant: { type: 'string', default: 'filled' },
+}} />
+```
+
+Properties also support `typeDescription`, `typeDescriptionLink`, `deprecated`, `parameters`, and `returns`.
+
+## Generated from TypeScript
+
+This table is generated from `example-types.ts` during MDX compilation. JSDoc descriptions and optional properties stay in sync with the source.
+
+<AutoTypeTable path="./example-types.ts" name="GuideOptions" />
+
+```mdx
+<auto-type-table path="./example-types.ts" name="GuideOptions" />
+```
+
+The `AutoTypeTable` spelling is supported too. Attributes must be strings, and file paths are relative to the MDX file. Generation happens at build time, so the browser does not load a TypeScript compiler.
+
+## Dynamic code
+
+<DynamicCodeBlock lang="tsx" code={"const guide = { title: 'Getting started' };\nconsole.log(guide.title);"} />
+
+```mdx
+<DynamicCodeBlock lang="tsx" code={"const ready = true;"} />
+```
+
+Standard fenced code keeps Fumadocs syntax highlighting, copy controls, and package-manager tabs. `CodeBlock` and `Pre` are also available for custom React renderers.

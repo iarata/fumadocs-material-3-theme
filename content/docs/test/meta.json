@@ -1,0 +1,6 @@
+{
+  "title": "Theme guide",
+  "icon": "Folder",
+  "defaultOpen": true,
+  "pages": ["navigation", "search", "layouts", "components"]
+}

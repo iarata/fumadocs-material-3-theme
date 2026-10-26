@@ -1,0 +1,82 @@
+---
+title: Feedback and overlays
+description: Material dialogs, tooltips, expressive progress, and loading states.
+icon: MessageCircle
+---
+
+## Dialogs
+
+Use a dialog for a short, focused explanation. It follows the Material basic dialog: a headline, supporting text, and an end-aligned closing action. Focus moves to the action when the dialog opens and returns to the trigger when it closes. Escape or selecting outside the dialog also dismisses it.
+
+<Dialog title="About this example" trigger="Open example dialog" closeLabel="Got it">
+  This dialog uses the same **Material colour roles** as the page.
+
+  - Press Escape or use a closing action to dismiss it.
+  - Keyboard focus stays inside while it is open.
+  - Keep longer instructions in the documentation itself.
+</Dialog>
+
+```mdx
+<Dialog title="About this example" trigger="Open example dialog"
+  closeLabel="Got it">
+  A short explanation with **Markdown**.
+</Dialog>
+```
+
+`title` and `trigger` are required strings. `closeLabel` defaults to `Got it`. The dialog starts closed.
+
+## Tooltips
+
+<Tooltip content="Browse the complete component catalogue">
+  <Button variant="outlined" icon="SquarePen" href="/docs/test/components">All components</Button>
+</Tooltip>
+
+```mdx
+<Tooltip content="Browse the complete component catalogue" position="above">
+  <Button href="/docs/test/components">All components</Button>
+</Tooltip>
+```
+
+Wrap one focusable control. `content` is the tooltip text; `position` defaults to `above`. The tooltip appears on hover or keyboard focus. Its text supplements the control's own label.
+
+## Progress indicators
+
+These are previews of progress states. Supply a changing `value` from a React component for a live task.
+
+<div className="docs-component-preview not-prose">
+  <Progress label="Guide completion" value={65} />
+  <Progress label="Files copied" value={3} max={5} variant="flat" />
+  <Progress label="Preparing preview" />
+  <Progress label="Circular progress" value={75} circular />
+</div>
+
+```mdx
+<Progress label="Guide completion" value={65} />
+<Progress label="Files copied" value={3} max={5} variant="flat" />
+<Progress label="Preparing preview" />
+<Progress label="Circular progress" value={75} circular />
+```
+
+| Prop | Purpose |
+| --- | --- |
+| `label` | Required accessible and visible description |
+| `value` | Current amount; omit for indeterminate progress |
+| `max` | Total amount, defaults to `100` |
+| `variant` | `wavy` (default) or `flat` |
+| `circular` | Use a circular indicator |
+
+## Loading states
+
+The expressive indicator provides a compact activity cue. A skeleton reserves space for content that is still loading.
+
+<LoadingIndicator label="Preparing the example…" />
+<Skeleton lines={3} label="Loading example content" />
+
+```mdx
+<LoadingIndicator label="Preparing the example…" />
+<Skeleton lines={3} label="Loading example content" />
+```
+
+`LoadingIndicator` accepts `label`. `Skeleton` accepts `lines` (1–8, default 3), `label`, and `animation` (`wave`, `pulse`, or `none`). Replace a loading state with the resulting content when the task completes.
+
+With reduced motion enabled, progress uses a flat appearance and indeterminate activity uses a static symbol. Skeletons also respect the system motion preference.

@@ -1,0 +1,29 @@
+---
+title: Getting started
+description: A Material 3 theme for Fumadocs on TanStack Start.
+icon: Rocket
+---
+
+This site is a starting point for documentation. Fumadocs provides the content, page tree, and search; [M3E](https://github.com/matraic/m3e) web components provide a Material 3 interface with light and dark themes, accessible colour roles, and keyboard-friendly navigation.
+
+## Make it yours
+
+<Steps>
+  <Step title="Name the site">Set `appName` and `gitConfig` in `src/lib/shared.ts`, and replace `BrandMark` in `src/components/ui/brand-icons.tsx` with your logo.</Step>
+  <Step title="Set the colours">Change the brand values in `src/styles/theme.css` and the matching roles in `src/styles/color-roles.css`. Keep text at 4.5:1 and indicators at 3:1.</Step>
+  <Step title="Configure navigation">Edit the navbar links and menus in `src/lib/layout.shared.tsx`.</Step>
+  <Step title="Write your docs">Replace the sample pages in `content/docs`. Every component below works in MDX without imports.</Step>
+</Steps>
+
+<Callout type="tip" title="Keep the samples for reference">
+  The example pages show every component and layout option. Delete `content/docs/test` and `content/docs/versions` when you no longer need them.
+</Callout>
+
+## Explore the theme
+
+<Cards>
+  <Card title="Components" icon="SquarePen" href="/docs/test/components">Material content, actions, forms, and feedback with copyable MDX.</Card>
+  <Card title="Navigation" icon="Folder" href="/docs/test/navigation">Sidebar sections, nested pages, and the mobile drawer.</Card>
+  <Card title="Layouts" icon="Menu" href="/docs/test/layouts">Navbar links, menus, tabs, and sidebar options.</Card>
+  <Card title="Versions" icon="Rocket" href="/docs/versions">A version picker that keeps matching pages.</Card>
+</Cards>

@@ -1,0 +1,176 @@
+---
+title: Material tabs
+description: Primary and secondary tabs with icons, badges, fixed layouts, and accessible states.
+icon: Folder
+---
+
+Tabs switch between related views on the same page. These examples use the [Material 3 tab patterns](https://material-web.dev/components/tabs/), with the docs' colour roles, keyboard focus, ripple, and animated indicators.
+
+## Primary tabs
+
+Use primary tabs for the main views in a section. Their rounded indicator follows the label; icons sit above the text. A fixed layout gives each tab equal space while preserving readable labels on smaller screens.
+
+<Preview title="Primary · icons and labels" align="start">
+  <Tabs label="Guide views" items={[
+    { label: 'Guide', value: 'guide', icon: 'FileText' },
+    { label: 'Code', value: 'code', icon: 'SquarePen' },
+    { label: 'Help', value: 'help', icon: 'Info' },
+  ]}>
+    <Tab value="guide">Start with the guide, then explore code and supporting notes.</Tab>
+    <Tab value="code">Build your example with the same Material components used in these docs.</Tab>
+    <Tab value="help">Every tab has a text label and a corresponding content panel.</Tab>
+  </Tabs>
+</Preview>
+
+```mdx
+<Tabs label="Guide views" variant="primary" layout="fixed" items={[
+  { label: 'Guide', value: 'guide', icon: 'FileText' },
+  { label: 'Code', value: 'code', icon: 'SquarePen' },
+]}>
+  <Tab value="guide">Guide content.</Tab>
+  <Tab value="code">Code content.</Tab>
+</Tabs>
+```
+
+Icons use the bundled Material Symbols. Tabs with icons default to `variant="primary"`; set the variant explicitly to choose a different hierarchy.
+
+## Secondary tabs
+
+Secondary tabs organize options within an existing view. They use a 48px row, an underline across the selected tab, and surface text colours. Code-fence tabs use this pattern and share a frame with the code below.
+
+```npm
+npm i @m3e/react fumadocs-core
+```
+
+<Preview title="Secondary · inline icons" align="start">
+  <Tabs variant="secondary" tone="tertiary" label="Example content">
+    <TabsList>
+      <TabsTrigger value="code" icon="SquarePen">Code</TabsTrigger>
+      <TabsTrigger value="notes" icon="Lightbulb">Notes</TabsTrigger>
+    </TabsList>
+    <TabsContent value="code">Use the code view to inspect an implementation.</TabsContent>
+    <TabsContent value="notes">Use notes for context that supports the example.</TabsContent>
+  </Tabs>
+</Preview>
+
+```mdx
+<Tabs variant="secondary" tone="tertiary" label="Example content">
+  <TabsList>
+    <TabsTrigger value="code" icon="SquarePen">Code</TabsTrigger>
+    <TabsTrigger value="notes" icon="Lightbulb">Notes</TabsTrigger>
+  </TabsList>
+  <TabsContent value="code">Code content.</TabsContent>
+  <TabsContent value="notes">Supporting notes.</TabsContent>
+</Tabs>
+```
+
+## Inline primary icons
+
+Set `inlineIcons` to keep primary icons beside their labels in a compact 48px row. The primary indicator still follows the content width. `tone` accepts `primary`, `secondary`, or `tertiary`.
+
+<Preview title="Primary · inline icons" align="start">
+  <Tabs variant="primary" inlineIcons tone="secondary" label="Reading mode" items={[
+    { label: 'Read', icon: 'FileText' },
+    { label: 'Explore', icon: 'Search' },
+  ]}>
+    <Tab>Read the page in order.</Tab>
+    <Tab>Explore related information at your own pace.</Tab>
+  </Tabs>
+</Preview>
+
+```mdx
+<Tabs variant="primary" inlineIcons items={[
+  { label: 'Read', icon: 'FileText' },
+  { label: 'Explore', icon: 'Search' },
+]}>
+  <Tab>Read content.</Tab>
+  <Tab>Explore content.</Tab>
+</Tabs>
+```
+
+## Badges and disabled tabs
+
+Use a small dot for new activity or a numbered badge for a count. Badges use the Material error role to stand out from navigation. Disabled tabs remain visible and are skipped by the keyboard.
+
+<Preview title="Badges · activity and counts" align="start">
+  <Tabs label="Review views" items={[
+    { label: 'Inbox', icon: 'MessageCircle', badge: 3, badgeLabel: '3 unread comments' },
+    { label: 'Updates', icon: 'RefreshCw', badge: 'dot', badgeLabel: 'New updates available' },
+    { label: 'Archive', icon: 'Folder', disabled: true },
+  ]}>
+    <Tab>Three comments are ready for review.</Tab>
+    <Tab>A new version of this guide is available.</Tab>
+    <Tab>Archived guides are not available in this example.</Tab>
+  </Tabs>
+</Preview>
+
+```mdx
+<Tabs label="Review views" items={[
+  { label: 'Inbox', icon: 'MessageCircle', badge: 3,
+    badgeLabel: '3 unread comments' },
+  { label: 'Updates', icon: 'RefreshCw', badge: 'dot',
+    badgeLabel: 'New updates available' },
+  { label: 'Archive', icon: 'Folder', disabled: true },
+]}>
+  <Tab>Comments.</Tab>
+  <Tab>Updates.</Tab>
+  <Tab>Archive.</Tab>
+</Tabs>
+```
+
+`badgeLabel` supplies an accessible description. Counts above 99 display as `99+`; a count of zero hides the badge. These options also work on `TabsTrigger` or `Tab`.
+
+## Icon-only tabs
+
+Use `iconOnly` when the symbols are familiar in context. Keep a descriptive `label` on every item: it remains available to assistive technology even when visually hidden. Labels are the recommended default for documentation.
+
+<Preview title="Icon only · labelled for assistive technology" align="start">
+  <Tabs label="Content types" iconOnly items={[
+    { label: 'Documents', icon: 'FileText' },
+    { label: 'Folders', icon: 'Folder' },
+    { label: 'Comments', icon: 'MessageCircle' },
+  ]}>
+    <Tab>Browse individual documents.</Tab>
+    <Tab>Browse documents organized into folders.</Tab>
+    <Tab>Read the discussion attached to this guide.</Tab>
+  </Tabs>
+</Preview>
+
+```mdx
+<Tabs label="Content types" iconOnly items={[
+  { label: 'Documents', icon: 'FileText' },
+  { label: 'Folders', icon: 'Folder' },
+]}>
+  <Tab>Documents.</Tab>
+  <Tab>Folders.</Tab>
+</Tabs>
+```
+
+## Scrollable tabs
+
+Choose `layout="scrollable"` for many tabs or longer labels. Tabs retain their natural widths, and scroll controls appear only when needed. Touch, trackpad, and keyboard navigation can reach the overflowed items.
+
+<Preview title="Scrollable · longer categories" align="start">
+  <Tabs label="Documentation categories" layout="scrollable" items={[
+    'Getting started', 'Installation', 'Configuration', 'Components', 'Accessibility', 'Troubleshooting',
+  ]}>
+    <Tab>Start with the basic concepts.</Tab>
+    <Tab>Install the documentation framework.</Tab>
+    <Tab>Configure the project for your content.</Tab>
+    <Tab>Explore the available Material components.</Tab>
+    <Tab>Check labels, focus, contrast, and reduced motion.</Tab>
+    <Tab>Find solutions to common problems.</Tab>
+  </Tabs>
+</Preview>
+
+```mdx
+<Tabs layout="scrollable" items={['Getting started', 'Installation', 'Configuration']}>
+  <Tab>Start here.</Tab>
+  <Tab>Install the project.</Tab>
+  <Tab>Configure the project.</Tab>
+</Tabs>
+```
+
+Use **Left/Right** to move focus, **Home/End** to reach the first or last available tab, and **Enter/Space** to select it. Selection, counts, disabled states, and panel labels are exposed to assistive technology. Reduced-motion settings disable the indicator animation.
+
+For shared preferences, controlled selections, and links to a specific panel, see [shared tab selection](/docs/test/components/accordions#shared-tab-selection).

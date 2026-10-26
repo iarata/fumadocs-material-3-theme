@@ -1,0 +1,75 @@
+---
+title: Components
+description: Material 3 components ready to use in your MDX documentation.
+icon: SquarePen
+---
+
+Use these components directly in any `.mdx` page. No imports are needed. They share the theme's colour palette, light and dark themes, Material typography, and compact controls.
+
+<Cards>
+  <Card title="Accordions and tabs" icon="ChevronDown" href="/docs/test/components/accordions">Disclosure panels, shared selections, and links to specific panels.</Card>
+  <Card title="Material tabs" icon="Folder" href="/docs/test/components/tabs">Primary and secondary tabs, icons, badges, and scrollable layouts.</Card>
+  <Card title="Buttons and chips" icon="ArrowRight" href="/docs/test/components/buttons">Actions, button groups, icon buttons, and linked chips.</Card>
+  <Card title="Content and callouts" icon="FileText" href="/docs/test/components/content">Card variants, status messages, badges, lists, and dividers.</Card>
+  <Card title="Feedback and overlays" icon="MessageCircle" href="/docs/test/components/feedback">Dialogs, tooltips, expressive progress, and loading states.</Card>
+  <Card title="Form controls" icon="SquarePen" href="/docs/test/components/forms">Text fields, selections, switches, checkboxes, and sliders.</Card>
+  <Card title="Step-by-step guides" icon="CheckCircle" href="/docs/test/components/stepper">Interactive steps with next, back, and reset actions.</Card>
+  <Card title="Files and steps" icon="Folder" href="/docs/test/components/files">File trees, static instructions, and inline contents.</Card>
+  <Card title="Type tables and code" icon="FileText" href="/docs/test/components/reference">Generated API references and dynamic highlighted code.</Card>
+  <Card title="Banners, images, and GitHub" icon="MessageCircle" href="/docs/test/components/media">Announcements, image zoom, repository information, and previews.</Card>
+  <Card title="Documentation graph" icon="Link" href="/docs/test/components/graph">Explore the relationship between pages.</Card>
+  <Card title="Material colour roles" icon="Sun" href="/docs/test/components/colors">Supporting colours, surfaces, and semantic states.</Card>
+</Cards>
+
+## Write it in MDX
+
+```mdx
+<Callout type="tip" title="Ready to use">
+  Combine **Markdown** with Material components.
+</Callout>
+<Button variant="tonal" icon="ArrowRight" href="/docs/test/components/forms">
+  Explore form controls
+</Button>
+```
+
+For custom React interactions, import the same controls from `@/components/m3e/mdx` in a `.tsx` component and register it in `src/components/mdx.tsx`.
+
+## Tabs
+
+<Tabs items={["Overview", "Details"]}>
+  <Tab>Tabs organize related information without leaving the current page.</Tab>
+  <Tab>Use the arrow keys to move between tabs, then open a tab with Enter.</Tab>
+</Tabs>
+
+```mdx
+<Tabs items={["Overview", "Details"]} defaultIndex={0}>
+  <Tab>Overview content.</Tab>
+  <Tab>Detailed content.</Tab>
+</Tabs>
+```
+
+## Expandable content
+
+<Accordions>
+  <Accordion title="How do I find a component?">Search for its name or use the nested links in the sidebar.</Accordion>
+  <Accordion title="Can I use the keyboard?">Use Tab to move between controls. Material focus rings show which control is active.</Accordion>
+</Accordions>
+
+```mdx
+<Accordions type="multiple">
+  <Accordion title="Before you start" defaultOpen>
+    Read the prerequisites.
+  </Accordion>
+  <Accordion title="Next steps">Continue the guide.</Accordion>
+</Accordions>
+```
+
+## Authoring notes
+
+The catalogue covers the components in the [Fumadocs UI component reference](https://www.fumadocs.dev/docs/ui/components), using Material styling and M3E interactions. The existing Fumadocs compiler provides syntax highlighting, generated type tables, and file-tree syntax.
+
+- Use `href` for navigation and `onClick` in a React component for an action. Internal links keep the docs open without a full page reload.
+- Buttons default to `size="small"` and a rounded shape. Reserve filled buttons for the main action.
+- Icon buttons require a descriptive `label`. Form controls require a visible `label`.
+- Keep essential instructions in the page; tooltips provide optional context.
+- Interactive examples are backed by M3E custom elements. Their behavior becomes available once the page has hydrated.

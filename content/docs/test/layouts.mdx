@@ -1,0 +1,77 @@
+---
+title: Layout configuration
+description: Navigation links, navbar menus, sidebar tabs, and documentation versions.
+icon: Sidebar
+---
+
+## Navigation links
+
+Configure shared navigation in `src/lib/layout.shared.tsx`. The desktop navbar supports text links, icon links, normal menus, and larger navigation menus. Mobile navigation presents the same destinations in the drawer, as navigation rows below the page list, with each menu shown as an expandable group.
+
+```tsx
+links: [
+  { text: 'Docs', url: '/docs', active: 'url' },
+  { text: 'Components', url: '/docs/test/components', active: 'nested-url' },
+  { type: 'icon', text: 'Repository', label: 'Open repository',
+    icon: <GitHubIcon />, url: 'https://github.com/example/docs', external: true },
+  { type: 'menu', text: 'Guides', items: [
+    { text: 'Navigation', url: '/docs/test/navigation' },
+  ] },
+  { type: 'menu', variant: 'navigation', text: 'Resources', items: [
+    { text: 'Components', description: 'Live examples', url: '/docs/test/components' },
+  ] },
+]
+```
+
+`active` accepts `url`, `nested-url`, or `none`. Set `secondary: true` to put an item with the secondary actions. Icon items are secondary by default. `on: 'nav'` limits an item to the desktop navbar; `on: 'menu'` limits it to the mobile drawer. Custom items use `{ type: 'custom', children: <YourComponent /> }`.
+
+## Navbar
+
+The shared `nav` option accepts `title`, `url`, `enabled`, `component`, and `transparentMode` (`none`, `top`, or `always`). Use `component` to provide a custom header. `githubUrl` remains a shortcut for the repository icon link.
+
+## Sidebar tabs
+
+The sidebar's Section selector is generated from root folders. Mark a folder in its `meta.json`:
+
+```json
+{
+  "title": "Components",
+  "description": "Material 3 components for MDX",
+  "icon": "SquarePen",
+  "root": true
+}
+```
+
+The active root's pages appear in the sidebar. Explicit configuration is available through the layout's `tabs` prop:
+
+```tsx
+<DocsLayout tabs={[
+  { title: 'Components', url: '/docs/test/components' },
+  { title: 'Guides', url: '/docs/test' },
+]} tabMode="dropdown" />
+```
+
+Each tab accepts `title`, `description`, `icon`, `url`, and an optional `urls: Set<string>`. Use `tabMode="top"` for compact inline section tabs. Set `tabs={false}` to hide the selectors. Use `tabs={{ transform: (option, folder) => ({ ...option }) }}` to decorate automatically generated tabs.
+
+## Versioning
+
+Folders marked with the same root type form a selector group. A `"version"` root creates the Version selector.
+
+```json
+{
+  "title": "v2 example",
+  "root": "version"
+}
+```
+
+Switching versions uses the corresponding file path. If the destination version has no matching page, it opens that version's index. Search results stay within the selected version. The [versioning example](/docs/versions/v2/getting-started) demonstrates both behaviors.
+
+For versions on separate deployments, pass `versions={[{ title: 'Latest', url: '/docs' }, { title: 'Archive', url: 'https://archive.example.com/docs' }]}` to the layout.
+
+## Mobile navigation
+
+The navigation button opens a Material drawer with search, section and version selectors, page navigation, resource links, and theme controls. Escape, the close button, or the scrim dismisses it; selecting a destination closes the drawer.
+
+## Sidebar options
+
+`sidebar` supports `enabled`, `collapsible`, `defaultOpenLevel`, `banner`, and `footer`. Use `banner` on the layout itself for an announcement above the page content.

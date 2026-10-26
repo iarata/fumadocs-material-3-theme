@@ -1,0 +1,7 @@
+{
+  "title": "Versioning example",
+  "description": "Try switching between sample documentation versions",
+  "icon": "Folder",
+  "root": true,
+  "pages": ["index", "v2", "v1"]
+}

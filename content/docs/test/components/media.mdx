@@ -1,0 +1,61 @@
+---
+title: Banners, images, and GitHub
+description: Announcements, image inspection, repository information, and previews.
+icon: MessageCircle
+---
+
+## Banners
+
+<Banner icon="Lightbulb">A short announcement uses a secondary tonal surface.</Banner>
+<Banner id="material-catalogue-example" variant="rainbow">This dismissible example blends the primary and tertiary containers into a blush of the brand accent red.</Banner>
+
+```mdx
+<Banner id="announcement" variant="rainbow">
+  Read the latest [component guide](/docs/test/components).
+</Banner>
+```
+
+Give a banner an `id` to make it dismissible and remember that choice. Omit the ID for a permanent note. Pass a `Banner` to the layout's `banner` option for a site announcement; the layout reserves its space automatically.
+
+## Zoomable images
+
+Select the image to open a full-screen viewer. Use the zoom controls or double-click to inspect details, scroll to pan, and choose **Fit** to see the whole image. Escape or the close button returns to the page.
+
+![How an MDX guide becomes a Material documentation page](/images/material-docs-flow.svg)
+
+```mdx
+![How a guide becomes a documentation page](/images/material-docs-flow.svg)
+```
+
+Regular Markdown images use `ImageZoom` automatically. It also accepts native image props such as `alt`, `width`, `height`, and `loading`.
+
+## GitHub information
+
+<GithubInfo owner="fuma-nama" repo="fumadocs" />
+
+```mdx
+<GithubInfo owner="fuma-nama" repo="fumadocs" />
+```
+
+The repository name remains a working link while public star and fork counts load. If GitHub is unavailable or rate limited, the link remains usable. No access token is sent to the browser.
+
+## Component previews
+
+<Preview title="A compact action">
+  <Button variant="tonal" icon="ArrowRight" href="/docs/test/components">Browse components</Button>
+</Preview>
+
+<Preview title="Related actions">
+  <Chips>
+    <Chip icon="FileText" tone="primary" href="/docs/test/components/content">Read the guide</Chip>
+    <Chip icon="Lightbulb" tone="tertiary" href="/docs/test/components/accordions">Try icon tabs</Chip>
+  </Chips>
+</Preview>
+
+```mdx
+<Preview title="A compact action">
+  <Button href="/docs/test/components">Browse components</Button>
+</Preview>
+```
+
+Previews separate their label from a padded, tonal canvas. Controls are centred by default. Set `align="start"` for forms, tabs, and other examples that should use the available width.

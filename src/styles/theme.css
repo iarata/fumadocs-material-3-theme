@@ -1,0 +1,35 @@
+/*
+ * Brand colours. To rebrand, change these three values and the matching roles in
+ * color-roles.css. The primary blue (HCT H246.7, tone 40) is the interactive colour.
+ * The accent red marks identity only (logo, page-title overline, banner) and never
+ * signals a state. Every role for both themes is defined once, in color-roles.css.
+ */
+:root {
+  --brand-primary: #006398;
+  --brand-ink: #001d32;
+  --brand-accent: #d61d41;
+}
+
+/* Fumadocs and Tailwind utilities (bg-fd-*, text-fd-*) read the Material roles. */
+@theme static {
+  --color-brand: var(--brand-accent);
+  --color-fd-background: var(--md-sys-color-surface);
+  --color-fd-foreground: var(--md-sys-color-on-surface);
+  --color-fd-muted: var(--md-sys-color-surface-container);
+  --color-fd-muted-foreground: var(--md-sys-color-on-surface-variant);
+  --color-fd-popover: var(--docs-popover);
+  --color-fd-popover-foreground: var(--md-sys-color-on-surface);
+  --color-fd-card: var(--md-sys-color-surface-container-low);
+  --color-fd-card-foreground: var(--md-sys-color-on-surface);
+  --color-fd-navigation: var(--docs-navigation);
+  --color-fd-border: var(--docs-border);
+  --color-fd-primary: var(--md-sys-color-primary);
+  --color-fd-primary-foreground: var(--md-sys-color-on-primary);
+  --color-fd-secondary: var(--md-sys-color-surface-container);
+  --color-fd-secondary-foreground: var(--md-sys-color-on-surface);
+  --color-fd-accent: color-mix(in srgb, var(--md-sys-color-on-surface) 8%, transparent);
+  --color-fd-accent-foreground: var(--md-sys-color-on-surface);
+  --color-fd-ring: var(--md-sys-color-primary);
+  --color-fd-error: var(--md-sys-color-error);
+  --color-fd-error-foreground: var(--md-sys-color-on-error);
+}

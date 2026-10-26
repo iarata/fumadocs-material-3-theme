@@ -1,0 +1,101 @@
+---
+title: Buttons and chips
+description: Compact Material actions, groups, chips, and keyboard focus.
+icon: ArrowRight
+---
+
+Buttons use a compact size, a state layer on hover, and a single focus ring that follows their shape.
+
+## Button styles
+
+<div className="docs-component-actions not-prose">
+  <Button variant="filled" icon="Search" href="/docs/test/search">Search guide</Button>
+  <Button variant="tonal" icon="Sidebar" href="/docs/test/navigation">Navigation guide</Button>
+  <Button variant="outlined" href="/docs/test/components">All components</Button>
+  <Button variant="text" disabled>Unavailable</Button>
+</div>
+
+## Keyboard focus
+
+Press **Tab** to move between controls. Each focus indicator follows the button's corners without adding a square outer border. Disabled controls are skipped.
+
+```mdx
+<Button variant="filled" icon="Search" href="/docs/test/search">
+  Search guide
+</Button>
+```
+
+| Prop | Values / purpose |
+| --- | --- |
+| `variant` | `text` (default), `filled`, `tonal`, `outlined`, `elevated` |
+| `size` | Defaults to `small`; `extra-small` is also available |
+| `icon` | A bundled Material Symbol name |
+| `href` | Destination for a link button |
+| `disabled` | Disables interaction |
+| `onClick` | Action handler when used from React |
+
+## Icon buttons and tooltips
+
+<div className="docs-component-actions not-prose">
+  <Tooltip content="Browse all Material components">
+    <IconButton icon="SquarePen" label="All components" variant="tonal" href="/docs/test/components" />
+  </Tooltip>
+  <Tooltip content="Read the search guide">
+    <IconButton icon="Search" label="Search guide" href="/docs/test/search" />
+  </Tooltip>
+</div>
+
+```mdx
+<Tooltip content="Browse all Material components">
+  <IconButton icon="SquarePen" label="All components"
+    variant="tonal" href="/docs/test/components" />
+</Tooltip>
+```
+
+`IconButton` requires `icon` and `label`. Its variants are `standard` (default), `filled`, `tonal`, and `outlined`.
+
+## Button groups
+
+Group closely related actions. A standard group retains each button's shape; a connected group joins their shapes.
+
+<ButtonGroup variant="connected" aria-label="Component guides">
+  <Button variant="tonal" href="/docs/test/components/content">Content</Button>
+  <Button variant="tonal" href="/docs/test/components/forms">Forms</Button>
+</ButtonGroup>
+
+```mdx
+<ButtonGroup variant="connected" aria-label="Component guides">
+  <Button variant="tonal" href="/docs/test/components/content">Content</Button>
+  <Button variant="tonal" href="/docs/test/components/forms">Forms</Button>
+</ButtonGroup>
+```
+
+## Assist chips
+
+Use chips for contextual links or actions. Use a Badge for static status text.
+
+<Chips>
+  <Chip icon="FileText" tone="primary" href="/docs/test/components/content">Content guide</Chip>
+  <Chip icon="Folder" tone="secondary" href="/docs/test/navigation">Navigation</Chip>
+  <Chip icon="Lightbulb" tone="tertiary" href="/docs/test/components/stepper">Step-by-step guide</Chip>
+  <Chip icon="CheckCircle" tone="success">Ready to review</Chip>
+  <Chip icon="Warning" tone="warning" variant="outlined">Review changes</Chip>
+  <Chip icon="Info" tone="info" disabled>Unavailable</Chip>
+</Chips>
+
+```mdx
+<Chips>
+  <Chip icon="FileText" tone="primary" href="/docs/test/components/content">Content guide</Chip>
+</Chips>
+```
+
+`Chips` wraps onto multiple lines. `Chip` supports `icon`, `href`, `disabled`, and `onClick`. Set `tone` to `primary`, `secondary` (default), `tertiary`, `neutral`, `info`, `success`, `warning`, or `error`. Use `variant="outlined"` for an outlined chip; the default uses a tonal fill with no elevation.
+
+
+## Code example
+
+The copy button is another compact control. Short examples fit their container; longer lines scroll inside the code block.
+
+```mdx
+<Button size="small" href="/docs/test/components">All components</Button>
+```

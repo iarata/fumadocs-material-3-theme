@@ -1,0 +1,7 @@
+{
+  "title": "Components",
+  "icon": "SquarePen",
+  "root": true,
+  "description": "Material 3 components for MDX",
+  "pages": ["index", "accordions", "tabs", "buttons", "content", "feedback", "forms", "stepper", "files", "reference", "media", "graph", "colors"]
+}

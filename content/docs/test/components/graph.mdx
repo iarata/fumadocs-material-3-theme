@@ -1,0 +1,17 @@
+---
+title: Documentation graph
+description: Explore the relationship between documentation pages.
+icon: Link
+---
+
+<GraphView />
+
+The map includes page groups and internal document references. Filter by title or URL, zoom with the controls, and select a node to navigate. The expandable list provides the same destinations in a simpler format.
+
+```mdx
+<GraphView />
+```
+
+A custom graph can be provided with `graph={{ nodes, links }}`. Each node has an `id`, `text`, and `url`; each link has a `source` and `target` node ID.
+
+Related pages: [file trees](/docs/test/components/files), [type tables](/docs/test/components/reference), and [layout configuration](/docs/test/layouts).

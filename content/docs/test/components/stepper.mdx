@@ -1,0 +1,50 @@
+---
+title: Step-by-step guides
+description: An interactive Material stepper for short documentation procedures.
+icon: CheckCircle
+---
+
+A stepper breaks a short procedure into manageable sections. Readers can move with **Continue** and **Back**, or select a step directly.
+
+## Interactive example
+
+<Stepper label="Create your first guide">
+  <Step title="Create a page">
+    Add an `.mdx` file under `content/docs` and give it a title.
+
+    ```mdx
+    ---
+    title: My guide
+    ---
+    ```
+  </Step>
+  <Step title="Add a component" optional>
+    Material components are already available in MDX.
+
+    <Callout type="tip">Start with a callout, then add interactive examples where they help.</Callout>
+  </Step>
+  <Step title="Preview the result">
+    Open the page and check its content in both themes. Try the keyboard controls and a narrow viewport too.
+
+    <Button variant="outlined" icon="SquarePen" href="/docs/test/components">Browse components</Button>
+  </Step>
+</Stepper>
+
+## Usage
+
+```mdx
+<Stepper label="Create your first guide" defaultIndex={0}>
+  <Step title="Create a page">Add a new MDX file.</Step>
+  <Step title="Add a component" optional>Include a helpful example.</Step>
+  <Step title="Preview the result">Review the finished page.</Step>
+</Stepper>
+```
+
+| Component | Props |
+| --- | --- |
+| `Stepper` | `label` describes the procedure; `defaultIndex` selects the initial step (zero-based) |
+| `Step` | `title` labels the step; `optional` adds an optional hint; `completed` marks a completed step |
+
+Put `Step` components directly inside `Stepper`. Each step can contain Markdown, code blocks, and other components. This is a navigation aid: moving forward does not validate forms or save data.
+
+For long tutorials, use separate pages so readers can link to individual stages. For independent sections, use [tabs or accordions](/docs/test/components).

@@ -1,0 +1,106 @@
+---
+title: Content and callouts
+description: Material cards, messages, badges, lists, and icons for documentation.
+icon: FileText
+---
+
+## Cards
+
+<Cards>
+  <Card title="Filled card" icon="FileText" href="/docs/test/components">A low-emphasis surface for related content.</Card>
+  <Card title="Outlined card" icon="SquarePen" variant="outlined" href="/docs/test/components/forms">A clear boundary on the page surface.</Card>
+  <Card title="Elevated card" icon="Lightbulb" variant="elevated">Elevation adds separation when the content needs it.</Card>
+</Cards>
+
+```mdx
+<Cards>
+  <Card title="Explore forms" icon="SquarePen" variant="outlined"
+    href="/docs/test/components/forms">
+    Fields, switches, and selections.
+  </Card>
+</Cards>
+```
+
+`Card` accepts `title`, `icon`, `href`, and `variant` (`filled`, `outlined`, or `elevated`). Omit `href` for static content. Avoid nesting another interactive control inside a linked card.
+
+## Callouts
+
+Callouts follow the Material banner layout on a filled card: a tonal container without an outline, a 24dp status icon, a title-small headline, body-medium text, and optional end-aligned actions. Tips use the tertiary surface; information, success, and warning messages use distinct status roles. Errors use a vermilion error role that stays distinct from the brand accent red. Each surface uses its paired foreground colour in both themes.
+
+<Callout>Use a note for context that helps readers understand the next section.</Callout>
+<Callout type="tip" title="Keep it focused">A short **tip** can make a longer procedure easier to follow.</Callout>
+<Callout type="success">Your example is ready to use.</Callout>
+<Callout type="warning">Review the prerequisites before continuing.</Callout>
+<Callout type="error" title="Example validation error">Describe what needs to change and how to correct it.</Callout>
+
+<Callout type="info" title="Continue exploring" actions={<Button variant="text" href="/docs/test/components/forms">Explore form controls</Button>}>
+  Add an optional action when readers have a useful next step.
+</Callout>
+
+```mdx
+<Callout type="tip" title="Keep it focused">
+  Supports **Markdown**, lists, and [links](/docs/test/components).
+</Callout>
+```
+
+`type` accepts `info` (default), `tip`, `success`, `warning` (or `warn`), and `error`. `title` is optional. These are static documentation notes, so they do not interrupt screen readers as live alerts.
+
+## Badges
+
+<div className="docs-component-actions not-prose">
+  <Badge>New</Badge>
+  <Badge tone="neutral">Optional</Badge>
+  <Badge tone="error">Needs attention</Badge>
+</div>
+
+```mdx
+<Badge>New</Badge>
+<Badge tone="neutral">Optional</Badge>
+<Badge tone="error">Needs attention</Badge>
+```
+
+Badges are fully rounded labels on a tonal container, sized to sit within a line of text. Use short labels. `tone` defaults to `primary` and also supports `secondary`, `tertiary`, `neutral`, `info`, `success`, `warning`, and `error`. Badges are informational, not buttons.
+
+## Lists
+
+<List label="Documentation resources">
+  <ListItem title="Form controls" description="Build an interactive example with labelled inputs." icon="SquarePen" href="/docs/test/components/forms" />
+  <ListItem title="Step-by-step guides" description="Walk readers through a short procedure." icon="CheckCircle" href="/docs/test/components/stepper" />
+  <ListItem title="Material Symbols" description="Bundled SVG icons inherit the current text colour." icon="Info"><Badge tone="neutral">Included</Badge></ListItem>
+</List>
+
+```mdx
+<List label="Documentation resources">
+  <ListItem title="Form controls" icon="SquarePen"
+    description="Labelled, interactive inputs."
+    href="/docs/test/components/forms" />
+  <ListItem title="Material Symbols" icon="Info">
+    <Badge tone="neutral">Included</Badge>
+  </ListItem>
+</List>
+```
+
+`List` requires an accessible `label`. `ListItem` accepts `title`, `description`, `icon`, and an optional `href`. Children occupy the trailing slot. Items without a destination remain static.
+
+## Dividers and icons
+
+<Divider />
+
+<div className="docs-component-actions not-prose">
+  <Icon name="Rocket" label="Primary" tone="primary" />
+  <Icon name="Folder" label="Secondary" tone="secondary" />
+  <Icon name="Info" label="Information" tone="info" />
+  <Icon name="Lightbulb" label="Tip" tone="tertiary" />
+  <Icon name="CheckCircle" label="Success" tone="success" />
+  <Icon name="Warning" label="Warning" tone="warning" />
+  <Icon name="Error" label="Error" tone="error" />
+</div>
+
+```mdx
+<Divider />
+<Icon name="Info" label="Information" tone="info" />
+```
+
+`Icon` is decorative by default. Add `label` when the symbol carries meaning by itself. Available names include `Search`, `FileText`, `SquarePen`, `Check`, `CheckCircle`, `Info`, `Lightbulb`, `Warning`, `Error`, `Rocket`, `Folder`, `Copy`, `Link`, `ExternalLink`, `ArrowLeft`, and `ArrowRight`. The full typed list lives in `src/components/ui/icons.tsx`.
+
+`tone` accepts `primary`, `secondary`, `tertiary`, `neutral`, `info`, `success`, `warning`, and `error`. Icons inherit their surrounding control's colour when no tone is specified.

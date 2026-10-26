@@ -1,0 +1,72 @@
+---
+title: Files and steps
+description: File trees, static steps, and inline contents in Material styling.
+icon: Folder
+---
+
+<InlineTOC defaultOpen>In this guide</InlineTOC>
+
+## File structure
+
+<Files>
+  <Folder name="content" defaultOpen>
+    <Folder name="docs" defaultOpen>
+      <File name="index.mdx" href="/docs" />
+      <File name="meta.json" />
+    </Folder>
+  </Folder>
+  <Folder name="src">
+    <Folder name="components"><File name="mdx.tsx" /></Folder>
+  </Folder>
+  <File name="package.json" />
+</Files>
+
+```mdx
+<Files>
+  <Folder name="content" defaultOpen>
+    <File name="index.mdx" href="/docs" />
+  </Folder>
+  <File name="package.json" />
+</Files>
+```
+
+Folders support `defaultOpen` and `disabled`. Files support `name`, an optional `icon`, and an optional `href`. The tree supports arrow keys, Home, End, and keyboard activation.
+
+## File code fences
+
+The Fumadocs remark plugin also converts a `files` code fence into the same Material tree.
+
+```files
+project
+├── content
+│   └── docs
+│       └── index.mdx
+└── package.json
+```
+
+## Static steps
+
+Use `Steps` when every instruction should remain visible. Use [Stepper](/docs/test/components/stepper) for interactive panels.
+
+<Steps>
+  <Step title="Create a document">Add an MDX file in the documentation directory.</Step>
+  <Step title="Describe the task">Write a short introduction and add useful examples.</Step>
+  <Step title="Review the page">Try the controls with a keyboard and check both themes.</Step>
+</Steps>
+
+```mdx
+<Steps>
+  <Step title="Create a document">Add an MDX file.</Step>
+  <Step title="Review the page">Preview your changes.</Step>
+</Steps>
+```
+
+The Fumadocs syntax with a Markdown heading inside each `Step` is also supported.
+
+## Inline contents
+
+`InlineTOC` uses the current page's headings by default. Supply `items` to display a custom Fumadocs TOC array.
+
+```mdx
+<InlineTOC defaultOpen>In this guide</InlineTOC>
+```

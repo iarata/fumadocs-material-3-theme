@@ -1,0 +1,55 @@
+---
+title: Material colour roles
+description: Brand colours, Material roles, surfaces, and status colours in both themes.
+icon: Sun
+---
+
+The default palette pairs a primary blue with a red brand accent. The primary blue marks everything you can act on and where you are: links, primary actions, focus, and the current page. Secondary roles use a quiet slate, tertiary roles add a muted purple, and cool neutral surfaces separate containers from the page. The accent red signs the page (the logo and the overline above each title) and never marks a state. Each container has a paired foreground colour.
+
+## Brand
+
+<div className="docs-colour-grid not-prose">
+  <div style={{ background: 'var(--brand-primary)', color: '#ffffff' }}>Brand primary</div>
+  <div style={{ background: 'var(--brand-ink)', color: '#e7f2ff' }}>Brand ink</div>
+  <div style={{ background: 'var(--brand-accent)', color: '#ffffff' }}>Brand accent</div>
+</div>
+
+## Role palette
+
+<div className="docs-colour-grid not-prose">
+  <div style={{ background: 'var(--md-sys-color-primary)', color: 'var(--md-sys-color-on-primary)' }}>Primary</div>
+  <div style={{ background: 'var(--md-sys-color-secondary)', color: 'var(--md-sys-color-on-secondary)' }}>Secondary</div>
+  <div style={{ background: 'var(--md-sys-color-tertiary)', color: 'var(--md-sys-color-on-tertiary)' }}>Tertiary</div>
+  <div style={{ background: 'var(--md-sys-color-primary-container)', color: 'var(--md-sys-color-on-primary-container)' }}>Primary container</div>
+  <div style={{ background: 'var(--md-sys-color-secondary-container)', color: 'var(--md-sys-color-on-secondary-container)' }}>Secondary container</div>
+  <div style={{ background: 'var(--md-sys-color-tertiary-container)', color: 'var(--md-sys-color-on-tertiary-container)' }}>Tertiary container</div>
+</div>
+
+The primary container marks selection everywhere: the current page, the current navbar link, selected menu items, and search matches. The secondary container is reserved for tonal actions, so an action never looks like the current page.
+
+## Status colours
+
+<div className="docs-component-actions not-prose">
+  <Badge tone="info">Information</Badge><Badge tone="success">Success</Badge><Badge tone="warning">Warning</Badge><Badge tone="error">Error</Badge>
+</div>
+
+<Callout type="info">Information uses the primary blue.</Callout>
+<Callout type="tip">Tips use the purple tertiary role.</Callout>
+<Callout type="success">Success has a distinct green role.</Callout>
+<Callout type="warning">Warnings use an amber role.</Callout>
+<Callout type="error">Errors use a vermilion role, kept apart from the brand accent by hue and tone.</Callout>
+
+Status colours always accompany a title and an icon, so they never rely on colour alone. All status containers share one tone, so no message is louder than another by accident. The success, warning, and information roles extend the Material palette; they are separate from the standard primary, secondary, tertiary, and error roles.
+
+## Surface hierarchy
+
+<div className="docs-colour-grid not-prose">
+  <div style={{ background: 'var(--docs-navigation)', color: 'var(--md-sys-color-on-surface)' }}>Navigation</div>
+  <div style={{ background: 'var(--md-sys-color-surface)', color: 'var(--md-sys-color-on-surface)' }}>Page</div>
+  <div style={{ background: 'var(--md-sys-color-surface-container-low)', color: 'var(--md-sys-color-on-surface)' }}>Surface low</div>
+  <div style={{ background: 'var(--md-sys-color-surface-container)', color: 'var(--md-sys-color-on-surface)' }}>Surface</div>
+  <div style={{ background: 'var(--md-sys-color-surface-container-high)', color: 'var(--md-sys-color-on-surface)' }}>Surface high</div>
+  <div style={{ background: 'var(--md-sys-color-surface-container-highest)', color: 'var(--md-sys-color-on-surface-variant)' }}>Surface highest</div>
+</div>
+
+Cards, code, previews, and accordions share the low surface and one outline. Menus, dialogs, and the search view sit one step higher. Switch themes to compare their contrast and emphasis.
