@@ -1,6 +1,7 @@
 {
   "name": "fumadocs-material",
   "private": true,
+  "license": "MIT",
   "type": "module",
   "sideEffects": false,
   "scripts": {

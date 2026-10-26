@@ -1,14 +1,77 @@
+<div align="center">
+
+<img src=".github/assets/logo.svg" width="64" height="64" alt="" />
+
 # Fumadocs Material
 
-A Material 3 documentation theme for [Fumadocs](https://fumadocs.dev) on
-[TanStack Start](https://tanstack.com/start). The interface uses
-[M3E](https://github.com/matraic/m3e) web components: Material 3 Expressive navigation,
-cards, callouts, tabs, dialogs, forms and more, in light and dark themes. Fumadocs Core
-and MDX provide the content, page tree, search and syntax highlighting.
+**A Material 3 documentation theme for [Fumadocs](https://fumadocs.dev).**<br />
+Built on TanStack Start and M3E web components, with light and dark themes and accessible colour.
 
-Use this repository as the base for a new documentation site.
+[![Fumadocs](https://img.shields.io/badge/Fumadocs-16-006398)](https://fumadocs.dev) [![TanStack Start](https://img.shields.io/badge/TanStack_Start-1.168-006398)](https://tanstack.com/start) [![M3E](https://img.shields.io/badge/M3E-2.9-006398)](https://github.com/matraic/m3e) [![Bun](https://img.shields.io/badge/Bun-required-006398?logo=bun&logoColor=white)](https://bun.sh) [![License: MIT](https://img.shields.io/badge/License-MIT-d61d41)](LICENSE)
 
-## Start a new docs site
+[Quick start](#quick-start) · [Features](#features) · [Make it yours](#make-it-yours) · [Writing docs](#writing-docs) · [Contributing](CONTRIBUTING.md)
+
+<br />
+
+<img src=".github/assets/hero.png" alt="The components page, split between the light and dark themes" width="100%" />
+
+</div>
+
+## Features
+
+- 🧭 **Material 3 Expressive shell:** sidebar with section and version pickers, navbar menus, a mobile drawer and a table of contents.
+- 🧩 **The full Fumadocs UI catalogue, in Material:** callouts, cards, tabs, accordions, steppers, dialogs, forms, type tables, file trees and more, with no imports needed in MDX.
+- 🎨 **Accessible colour:** text meets 4.5:1 and indicators meet 3:1, in both themes.
+- 🔎 **Search:** filter by pages or sections and navigate with the keyboard.
+- 🗂️ **Versioned docs:** a version picker that keeps you on the matching page.
+- ✨ **AI-ready:** an Ask AI chat, `llms.txt`, a Markdown copy of every page and generated Open Graph images.
+
+## Gallery
+
+<table>
+  <tr>
+    <td width="50%">
+      <picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/callouts-dark.png" /><img src=".github/assets/callouts-light.png" alt="Note, tip, success and warning callouts" /></picture>
+      <p align="center"><b>Callouts</b></p>
+    </td>
+    <td width="50%">
+      <picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/search-dark.png" /><img src=".github/assets/search-light.png" alt="Search dialog with filters and highlighted matches" /></picture>
+      <p align="center"><b>Search</b></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/accordion-dark.png" /><img src=".github/assets/accordion-light.png" alt="Grouped accordion panels" /></picture>
+      <p align="center"><b>Accordions</b></p>
+    </td>
+    <td width="50%">
+      <picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/stepper-dark.png" /><img src=".github/assets/stepper-light.png" alt="Interactive stepper" /></picture>
+      <p align="center"><b>Steppers</b></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/forms-dark.png" /><img src=".github/assets/forms-light.png" alt="Outlined and filled text fields" /></picture>
+      <p align="center"><b>Forms</b></p>
+    </td>
+    <td width="50%">
+      <picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/tabs-dark.png" /><img src=".github/assets/tabs-light.png" alt="Primary tabs with icons" /></picture>
+      <p align="center"><b>Tabs</b></p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/mobile-page-dark.png" /><img src=".github/assets/mobile-page-light.png" alt="A docs page on a phone" width="260" /></picture>
+      &nbsp;&nbsp;
+      <picture><source media="(prefers-color-scheme: dark)" srcset=".github/assets/mobile-drawer-dark.png" /><img src=".github/assets/mobile-drawer-light.png" alt="The navigation drawer on a phone" width="260" /></picture>
+      <p align="center"><b>Phones</b></p>
+    </td>
+  </tr>
+</table>
+
+<sub>Screenshots follow your GitHub theme.</sub>
+
+## Quick start
 
 ```bash
 gh repo create my-docs --private --template iarata/fumadocs-material --clone
@@ -17,138 +80,100 @@ bun install
 bun run dev
 ```
 
-Or select **Use this template** on GitHub. Install with Bun so the versioned M3E patch in
-`patches/` is applied; it adds the radio group's missing value setter, which its native
-form reset requires.
+Or select **Use this template** on GitHub. Use Bun, which applies the M3E fix in `patches/`.
 
-Ask AI uses OpenRouter. Copy `.env.example` to `.env.local` and set `OPENROUTER_API_KEY`
-(and optionally `OPENROUTER_MODEL`). Everything else works without it.
+> [!TIP]
+> To enable **Ask AI**, copy `.env.example` to `.env.local` and set `OPENROUTER_API_KEY`. Everything else works without it.
 
 | Command | Purpose |
 | --- | --- |
-| `bun run dev` | Development server |
-| `bun run build` | Production build |
+| `bun run dev` | Start the development server |
+| `bun run build` | Build for production |
 | `bun run start` | Preview the production build |
 | `bun run types:check` | Type-check |
 | `bun run lint` | Lint with oxlint |
 
 ## Make it yours
 
-1. **Name and repository:** `appName` and `gitConfig` in `src/lib/shared.ts`. They feed the
-   header, page titles, Open Graph images and the GitHub and "Edit on GitHub" links.
-2. **Logo:** replace `BrandMark` in `src/components/ui/brand-icons.tsx`. Its shape follows
-   `--docs-brand`; a part with the `docs-brand-mark-cross` class follows `--docs-on-brand`.
-3. **Colours:** see [Colours](#colours). Update the Open Graph colours in `src/lib/og.tsx`
-   and the hard-coded colours in `public/images/material-docs-flow.svg` too.
-4. **Navigation:** navbar links and menus in `src/lib/layout.shared.tsx`.
-5. **Home page:** `src/routes/index.tsx`.
-6. **Content:** write pages in `content/docs`. `content/docs/test` (component catalogue,
-   navigation, layouts and search) and `content/docs/versions` (a version picker example)
-   are samples; keep them for reference or delete them and update `content/docs/meta.json`
-   and the links in `layout.shared.tsx`.
+| Change | Where |
+| --- | --- |
+| Site name and repository | `appName` and `gitConfig` in `src/lib/shared.ts` |
+| Logo | `BrandMark` in `src/components/ui/brand-icons.tsx` |
+| Colours | `src/styles/theme.css` and `src/styles/color-roles.css` |
+| Social images | `src/lib/og.tsx` |
+| Navbar links and menus | `src/lib/layout.shared.tsx` |
+| Home page | `src/routes/index.tsx` |
+| Content | `content/docs` |
 
-## Colours
+The sample pages in `content/docs/test` and `content/docs/versions` show every component and option. Delete them when you no longer need them, then update `content/docs/meta.json` and the navbar links.
 
-`src/styles/theme.css` holds the three brand colours: primary blue `#006398`, ink
-`#001d32` and accent red `#d61d41`. It also maps the Fumadocs/Tailwind `fd-*` colours onto
-Material roles. `color-roles.css` is the single source for every Material role, the
-information, tip, success and warning roles, and the syntax roles, in both themes. M3E
-falls back to its baseline purple for any undefined `--md-sys-color-*` role, so keep every
-role defined in both blocks.
+> [!IMPORTANT]
+> **Colour rules:**
+> - Primary marks what is interactive or selected. The accent marks identity only (the logo and the title overline).
+> - Text needs 4.5:1 contrast and indicators need 3:1, in both themes.
+> - Define every `--md-sys-color-*` role in both theme blocks, because M3E falls back to its baseline purple.
 
-The primary colour marks everything interactive or selected. The accent marks identity
-only (the logo, the page-title overline and the expressive banner) and never a state.
-Text pairs meet at least 4.5:1, and indicators, control outlines and tracks at least 3:1,
-in both themes. Keep these ratios when you rebrand: derive the roles from tonal palettes
-(for example with [Material Theme Builder](https://material-foundation.github.io/material-theme-builder/))
-and check the pairs. `component-colors.css` chooses which role each M3E component state
-uses. Code is highlighted with the Shiki theme in `src/lib/code-theme.ts`, which reads the
-`--docs-code-*` roles.
+## Writing docs
 
-## Project structure
-
-- `src/components/m3e`: the docs shell (layouts, sidebar, navbar, mobile drawer, search,
-  page and table of contents).
-- `src/components/m3e/mdx`: the MDX component wrappers.
-- `src/components/mdx.tsx`: maps MDX elements and generated package-manager tabs to M3E
-  components.
-- `src/components/ai`: Ask AI chat and page actions.
-- `src/styles`: `m3e.css`, `docs-extensions.css`, `navigation.css`, `mdx-components.css`
-  and `tabs.css` style the components and layout; `typography.css` defines the Material 3
-  type scale.
-
-Interface icons use bundled Material Symbols Rounded SVGs in `src/components/ui/icons.tsx`
-(Apache 2.0, see `material-symbols.LICENSE`). Company logos live in `brand-icons.tsx`;
-Lucide is the fallback for additional frontmatter icons. Sidebar motion follows the
-original Fumadocs 300ms transition and respects reduced-motion preferences.
-
-## Components in MDX
-
-Open `/docs/test/components` for live examples and copyable MDX. All components
-are registered globally in `src/components/mdx.tsx`; MDX pages need no imports.
-
-- Content: `Card`, `Cards`, `Callout`, `Badge`, `List`, `ListItem`, `Divider`, `Icon`
-- Actions: `Button`, `IconButton`, `ButtonGroup`, `Chip`, `Chips`
-- Feedback: `Dialog`, `Tooltip`, `Progress`, `LoadingIndicator`, `Skeleton`
-- Inputs: `TextField`, `TextArea`, `Checkbox`, `Switch`, `RadioGroup`, `Select`, `Slider`
-- Organization: `Tabs`, `Tab`, `TabsList`, `TabsTrigger`, `TabsContent`, `Accordions`, `Accordion`, `Stepper`, `Steps`, `Step`
-- Documentation: `Files`, `File`, `Folder`, `TypeTable`, `InlineTOC`, `CodeBlock`, `Pre`, `DynamicCodeBlock`
-- Media and announcements: `ImageZoom`, `Banner`, `GithubInfo` / `GitHubInfo`, `GraphView`, `Preview`
-
-This covers the [Fumadocs UI component catalogue](https://www.fumadocs.dev/docs/ui/components).
-Markdown images use `ImageZoom` automatically. File code fences and `<auto-files>`
-are compiled into Material file trees by `remarkMdxFiles`. Generate API tables with
-`<auto-type-table path="./types.ts" name="Options" />` (or `AutoTypeTable`): the
-`fumadocs-typescript` remark plugins in `vite.config.ts` run at build time.
-Paths are relative to the MDX file; attributes must be strings.
-
-`Tabs` supports synchronized `groupId` selections, optional `persist`, panel IDs,
-and `updateAnchor`. Use object items (`{ label, value, icon }`) or `icon` on
-`TabsTrigger` / `Tab` for Material icon tabs. `variant="primary"` stacks icons above
-labels; `variant="secondary"` keeps a compact row. Primary tabs also support
-`inlineIcons` and `iconOnly` (item labels remain accessible). Use `layout="fixed"`
-for equal-width tabs or `layout="scrollable"` for longer lists. Items, triggers,
-and panels accept `disabled`, `badge` (a count or `"dot"`), and `badgeLabel`.
-See `/docs/test/components/tabs` for all variants. Tabs accept primary, secondary,
-or tertiary `tone` values. Icons and chips also accept semantic tones such as
-`info`, `success`, `warning`, and `error`; see the live examples for all values.
-Dropdowns use matching arrow, focus, and selected-option colours.
-
-`ImageZoom` opens a full-screen viewer with fit, zoom, panning, and Escape dismissal.
-`Preview` separates its label from the example canvas; use `align="start"` for
-full-width examples. Callouts use filled Material cards in the banner layout: tonal
-container, status icon, headline, body text and end-aligned actions.
-`Banner` remembers dismissal when given an `id`. `GraphView`
-uses the current page tree and lazily loads document references from `/api/docs-graph`.
-`GithubInfo` loads public repository statistics and keeps its link usable if the API
-is unavailable.
+Components are registered globally, so MDX pages need no imports:
 
 ```mdx
 <Callout type="tip" title="Ready to use">
   Combine **Markdown** with Material components.
 </Callout>
-<Button variant="tonal" icon="ArrowRight" href="/docs/test/components/forms">
-  Explore form controls
+
+<Button variant="tonal" icon="ArrowRight" href="/docs/test/components">
+  Explore components
 </Button>
 ```
 
-The wrappers live in `src/components/m3e/mdx`, with scoped styling in
-`src/styles/mdx-components.css`. Custom React examples can import these wrappers
-from `@/components/m3e/mdx` and use `onValueChange` / `onCheckedChange` for state.
-Register custom examples in the MDX component map to make them available in docs.
+<details>
+<summary><b>All components</b></summary>
 
-## Navigation and versions
+| Group | Components |
+| --- | --- |
+| Content | `Card`, `Cards`, `Callout`, `Badge`, `List`, `ListItem`, `Divider`, `Icon` |
+| Actions | `Button`, `IconButton`, `ButtonGroup`, `Chip`, `Chips` |
+| Feedback | `Dialog`, `Tooltip`, `Progress`, `LoadingIndicator`, `Skeleton` |
+| Inputs | `TextField`, `TextArea`, `Checkbox`, `Switch`, `RadioGroup`, `Select`, `Slider` |
+| Organisation | `Tabs`, `Tab`, `TabsList`, `TabsTrigger`, `TabsContent`, `Accordions`, `Accordion`, `Stepper`, `Steps`, `Step` |
+| Documentation | `Files`, `File`, `Folder`, `TypeTable`, `AutoTypeTable`, `InlineTOC`, `CodeBlock`, `Pre`, `DynamicCodeBlock` |
+| Media | `ImageZoom`, `Banner`, `GithubInfo`, `GraphView`, `Preview` |
 
-Configure navbar links in `src/lib/layout.shared.tsx`: text links, labelled icon
-links, ordinary menus, navigation menus, and custom content are supported. Mobile
-navigation puts these links in a Material drawer alongside search and page links.
+Live examples with copyable MDX are at `/docs/test/components`.
 
-Set `root: true` in a folder's `meta.json` to create a sidebar section. Set
-`root: "version"` on sibling folders for a version selector. Matching pages are
-preserved when switching versions; missing pages fall back to the target index.
-Include `"index"` in an explicit `pages` list to retain that landing page.
-Search is scoped to the active version. The clearly labelled v1/v2 examples in
-`content/docs/versions` demonstrate matching-page and missing-page navigation.
+</details>
 
-`DocsLayout` also accepts explicit `tabs`, `tabMode`, `versions`, navbar options,
-and sidebar options. See `/docs/test/layouts` for complete configuration examples.
+<details>
+<summary><b>Navigation and versions</b></summary>
+
+- `root: true` in a folder's `meta.json` makes it a sidebar section.
+- `root: "version"` on sibling folders adds a version picker. Switching versions keeps you on the matching page, or opens the version's index if there isn't one.
+- Search is scoped to the active version.
+- `DocsLayout` also accepts `tabs`, `tabMode`, `versions`, and navbar and sidebar options. See `/docs/test/layouts`.
+
+</details>
+
+## Project structure
+
+```text
+content/docs/            MDX pages and meta.json files
+src/components/m3e/      Docs shell: layouts, sidebar, navbar, drawer, search, TOC
+src/components/m3e/mdx/  MDX components
+src/components/mdx.tsx   MDX component map
+src/components/ai/       Ask AI and page actions
+src/lib/                 Site config, content source, code theme, OG images
+src/routes/              Pages, search, chat, llms.txt and OG image routes
+src/styles/              Theme, colour roles, component styles, type scale
+patches/                 M3E fix, applied by Bun on install
+```
+
+## Contributing
+
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+[MIT](LICENSE) © Alireza Hajebrahimi. The bundled Material Symbols icons are under the Apache License 2.0 (`src/components/ui/material-symbols.LICENSE`).
+
+Built with [Fumadocs](https://fumadocs.dev), [TanStack Start](https://tanstack.com/start), [M3E](https://github.com/matraic/m3e) and [Material Design 3](https://m3.material.io).
