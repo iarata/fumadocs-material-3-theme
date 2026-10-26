@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "carp-docs-fumadocs",
+      "name": "fumadocs-material-3-theme",
       "dependencies": {
         "@ai-sdk/react": "^4.0.0",
         "@fontsource-variable/roboto": "5.3.0",
